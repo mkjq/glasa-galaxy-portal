@@ -18,10 +18,7 @@ const InstagramButton = () => {
         {chars.map((char, i) => (
           <span
             key={i}
-            style={{
-              "--index": i,
-              transform: `rotate(${degPerChar * i}deg)`,
-            } as React.CSSProperties}
+            style={{ "--index": i } as React.CSSProperties}
           >
             {char}
           </span>

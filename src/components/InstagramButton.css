@@ -33,11 +33,8 @@
 
 .button__text > span {
   position: absolute;
-  transform: rotate(calc(18.95deg * var(--index)));
+  transform: rotate(calc(18deg * var(--index)));
   inset: 7px;
-  display: inline-block;
-  font-size: 0.6rem;
-  transform-origin: center center;
 }
 
 .button__circle {
