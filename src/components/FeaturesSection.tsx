@@ -49,8 +49,6 @@ const FeaturesSection = () => {
             );
           })}
         </div>
-
-        <MKQCube />
       </div>
     </section>
   );
