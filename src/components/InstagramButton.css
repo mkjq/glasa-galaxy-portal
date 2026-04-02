@@ -1,4 +1,4 @@
-.button {
+.ig-button {
   cursor: pointer;
   border: none;
   background: linear-gradient(
@@ -24,19 +24,19 @@
   text-decoration: none;
 }
 
-.button__text {
+.ig-button__text {
   position: absolute;
   inset: 0;
-  animation: text-rotation 8s linear infinite;
+  animation: ig-text-rotation 8s linear infinite;
 }
 
-.button__text > span {
+.ig-button__text span {
   position: absolute;
-  transform: rotate(calc(18deg * var(--index)));
+  transform: rotate(calc(18.95deg * var(--index)));
   inset: 7px;
 }
 
-.button__circle {
+.ig-button__circle {
   position: relative;
   width: 40px;
   height: 40px;
@@ -49,36 +49,36 @@
   justify-content: center;
 }
 
-.button__icon--copy {
+.ig-button__icon--copy {
   position: absolute;
   transform: translate(-150%, 150%);
 }
 
-.button:hover {
+.ig-button:hover {
   background: #000;
   transform: scale(1.05);
 }
 
-.button:hover .button__icon {
+.ig-button:hover .ig-button__icon {
   color: #fff;
 }
 
-.button:hover .button__icon:first-child {
+.ig-button:hover .ig-button__icon:first-child {
   transition: transform 0.3s ease-in-out;
   transform: translate(150%, -150%);
 }
 
-.button:hover .button__icon--copy {
+.ig-button:hover .ig-button__icon--copy {
   transition: transform 0.3s ease-in-out 0.1s;
   transform: translate(0);
 }
 
-@keyframes text-rotation {
+@keyframes ig-text-rotation {
   to {
     rotate: 360deg;
   }
 }
 
-.button:active {
+.ig-button:active {
   transform: scale(0.95);
 }
