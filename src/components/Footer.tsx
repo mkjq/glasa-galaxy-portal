@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="relative border-t border-border/50 py-12 px-4">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-2">
-          <span className="text-xl font-black gradient-text">Lovable</span>
+          <span className="text-xl font-black gradient-text">MKQ</span>
         </div>
 
         <div className="flex items-center gap-6">
