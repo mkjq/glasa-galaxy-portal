@@ -44,7 +44,6 @@ const HeroSection = () => {
           {t("hero.cta")}
         </motion.a>
       </div>
-      </div>
 
       <motion.div
         animate={{ y: [0, 10, 0] }}
