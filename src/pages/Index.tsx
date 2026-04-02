@@ -14,6 +14,9 @@ const Index = () => {
       <div className="relative min-h-screen overflow-x-hidden scroll-smooth">
         <ParticleBackground />
         <LanguageToggle />
+        <div className="fixed bottom-6 left-6 z-50">
+          <InstagramButton />
+        </div>
         <HeroSection />
         <ToolsSection />
         <FeaturesSection />
