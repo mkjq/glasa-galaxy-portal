@@ -14,7 +14,7 @@ const Index = () => {
         <ParticleBackground />
         <LanguageToggle />
         <HeroSection />
-        <MKQCube />
+        <ToolsSection />
         <ToolsSection />
         <FeaturesSection />
         <Footer />

@@ -82,7 +82,7 @@ const MKQCube = () => {
           </Canvas>
         </Suspense>
       </div>
-    </section>
+    </>
   );
 };
 
