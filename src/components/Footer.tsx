@@ -24,7 +24,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      <p className="text-center text-muted-foreground text-xs mt-8">© 2026 Lovable. {t("footer.rights")}</p>
+      <p className="text-center text-muted-foreground text-xs mt-8">© 2026 MKQ. {t("footer.rights")}</p>
     </footer>
   );
 };
