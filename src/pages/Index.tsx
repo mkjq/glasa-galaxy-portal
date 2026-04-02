@@ -1,6 +1,7 @@
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import ParticleBackground from "@/components/ParticleBackground";
 import HeroSection from "@/components/HeroSection";
+import MKQCube from "@/components/MKQCube";
 import ToolsSection from "@/components/ToolsSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import Footer from "@/components/Footer";
@@ -13,6 +14,7 @@ const Index = () => {
         <ParticleBackground />
         <LanguageToggle />
         <HeroSection />
+        <MKQCube />
         <ToolsSection />
         <FeaturesSection />
         <Footer />
