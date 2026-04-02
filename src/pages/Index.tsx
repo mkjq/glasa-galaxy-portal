@@ -15,7 +15,6 @@ const Index = () => {
         <LanguageToggle />
         <HeroSection />
         <ToolsSection />
-        <ToolsSection />
         <FeaturesSection />
         <Footer />
       </div>
