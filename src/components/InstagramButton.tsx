@@ -3,6 +3,9 @@ import "./InstagramButton.css";
 const text = "INSTAGRAM INSTAGRAM ";
 
 const InstagramButton = () => {
+  const chars = text.split("");
+  const degPerChar = 360 / chars.length;
+
   return (
     <a
       href="https://www.instagram.com/55htp"
@@ -12,8 +15,14 @@ const InstagramButton = () => {
       aria-label="Follow on Instagram"
     >
       <p className="button__text">
-        {text.split("").map((char, i) => (
-          <span key={i} style={{ "--index": i } as React.CSSProperties}>
+        {chars.map((char, i) => (
+          <span
+            key={i}
+            style={{
+              "--index": i,
+              transform: `rotate(${degPerChar * i}deg)`,
+            } as React.CSSProperties}
+          >
             {char}
           </span>
         ))}
