@@ -10,8 +10,8 @@
     #bc1888 100%
   );
   color: #fff;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
@@ -28,19 +28,18 @@
   position: absolute;
   inset: 0;
   animation: text-rotation 8s linear infinite;
-  font-size: 0.55rem;
 }
 
 .button__text > span {
   position: absolute;
-  transform: rotate(calc(14.4deg * var(--index)));
-  inset: 5px;
+  transform: rotate(calc(18deg * var(--index)));
+  inset: 7px;
 }
 
 .button__circle {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   overflow: hidden;
   background: #212121;
   color: #dc2743;
