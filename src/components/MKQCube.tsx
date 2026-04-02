@@ -61,7 +61,7 @@ const CubeMesh = () => {
 const MKQCube = () => {
   return (
     <section className="relative py-8 flex items-center justify-center">
-      <div className="w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px]">
+    <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px] mx-auto mt-8">
         <Suspense fallback={null}>
           <Canvas
             camera={{ position: [0, 0, 3], fov: 45 }}
