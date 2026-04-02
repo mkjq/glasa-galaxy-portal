@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
+import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 
 
 const HeroSection = () => {
-  const { t } = useLang();
+  const { t, dir } = useLang();
+  const isRtl = dir === "rtl";
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
@@ -18,7 +20,10 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight gradient-text mb-6"
+           className={cn(
+             "font-black leading-tight gradient-text mb-6",
+             isRtl ? "text-3xl sm:text-4xl md:text-5xl lg:text-6xl" : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+           )}
         >
           {t("hero.title")}
         </motion.h1>
