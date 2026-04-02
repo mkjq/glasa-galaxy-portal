@@ -24,7 +24,8 @@ const FeaturesSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-black gradient-text mb-4">{t("features.title")}</h2>
-          <p className="text-muted-foreground text-lg">{t("features.subtitle")}</p>
+          <p className="text-muted-foreground text-lg mb-4">{t("features.subtitle")}</p>
+          <MKQCube />
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -48,8 +49,6 @@ const FeaturesSection = () => {
             );
           })}
         </div>
-
-        <MKQCube />
       </div>
     </section>
   );
