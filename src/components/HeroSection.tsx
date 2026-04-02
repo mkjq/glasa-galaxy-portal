@@ -5,7 +5,8 @@ import { ChevronDown } from "lucide-react";
 
 
 const HeroSection = () => {
-  const { t } = useLang();
+  const { t, dir } = useLang();
+  const isRtl = dir === "rtl";
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
