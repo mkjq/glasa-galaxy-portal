@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 import { ChevronDown } from "lucide-react";
-import MKQCube from "./MKQCube";
+
 
 const HeroSection = () => {
   const { t } = useLang();
