@@ -6,6 +6,7 @@ import ToolsSection from "@/components/ToolsSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import Footer from "@/components/Footer";
 import LanguageToggle from "@/components/LanguageToggle";
+import InstagramButton from "@/components/InstagramButton";
 
 const Index = () => {
   return (
