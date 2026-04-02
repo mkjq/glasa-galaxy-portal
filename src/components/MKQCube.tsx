@@ -1,4 +1,4 @@
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, RoundedBox, Environment } from "@react-three/drei";
 import * as THREE from "three";
@@ -8,49 +8,81 @@ const CubeMesh = () => {
 
   const texture = useMemo(() => {
     const canvas = document.createElement("canvas");
-    canvas.width = 512;
-    canvas.height = 512;
+    canvas.width = 1024;
+    canvas.height = 1024;
     const ctx = canvas.getContext("2d")!;
-    ctx.fillStyle = "#111111";
-    ctx.fillRect(0, 0, 512, 512);
-    ctx.font = "bold 120px Inter, sans-serif";
-    ctx.fillStyle = "#FF00FF";
+
+    // Dark background with subtle gradient
+    const grad = ctx.createRadialGradient(512, 512, 100, 512, 512, 512);
+    grad.addColorStop(0, "#1a1a2e");
+    grad.addColorStop(1, "#0a0a14");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 1024, 1024);
+
+    // Neon glow behind text
+    ctx.shadowColor = "#c026d3";
+    ctx.shadowBlur = 60;
+    ctx.font = "bold 220px 'Inter', 'Arial Black', sans-serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("MKQ", 256, 256);
+    ctx.fillStyle = "#c026d3";
+    ctx.fillText("MKQ", 512, 512);
+
+    // Crisp text on top
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = "#ffffff";
+    ctx.fillText("MKQ", 512, 512);
+
+    // Subtle outline
+    ctx.strokeStyle = "#a855f7";
+    ctx.lineWidth = 2;
+    ctx.strokeText("MKQ", 512, 512);
+
     const tex = new THREE.CanvasTexture(canvas);
-    tex.minFilter = THREE.NearestFilter;
-    tex.generateMipmaps = false;
     tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = 16;
     return tex;
   }, []);
 
   useFrame((_, delta) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.5;
+      meshRef.current.rotation.y += delta * 0.4;
+      meshRef.current.rotation.x = Math.sin(Date.now() * 0.001) * 0.1;
     }
   });
 
   return (
-    <RoundedBox ref={meshRef} args={[1, 1, 1]} radius={0.1} smoothness={7}>
-      <meshStandardMaterial roughness={0} map={texture} />
+    <RoundedBox ref={meshRef} args={[1.2, 1.2, 1.2]} radius={0.08} smoothness={8}>
+      <meshStandardMaterial roughness={0.05} metalness={0.3} map={texture} />
     </RoundedBox>
   );
 };
 
 const MKQCube = () => {
   return (
-    <div className="w-full h-[400px] md:h-[500px]">
-      <Canvas
-        camera={{ position: [0, 0, 2.5], fov: 50 }}
-        gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping }}
-      >
-        <Environment preset="studio" />
-        <directionalLight position={[5, 5, 5]} intensity={1} />
-        <CubeMesh />
-        <OrbitControls autoRotate enableDamping enableZoom={false} />
-      </Canvas>
-    </div>
+    <section className="relative py-8 flex items-center justify-center">
+      <div className="w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px]">
+        <Suspense fallback={null}>
+          <Canvas
+            camera={{ position: [0, 0, 3], fov: 45 }}
+            gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }}
+          >
+            <Environment preset="studio" />
+            <ambientLight intensity={0.3} />
+            <directionalLight position={[5, 5, 5]} intensity={1.5} />
+            <pointLight position={[-3, 2, 3]} color="#a855f7" intensity={2} />
+            <CubeMesh />
+            <OrbitControls
+              autoRotate
+              autoRotateSpeed={2}
+              enableDamping
+              enableZoom={false}
+              enablePan={false}
+            />
+          </Canvas>
+        </Suspense>
+      </div>
+    </section>
   );
 };
 
