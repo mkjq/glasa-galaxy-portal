@@ -1,9 +1,8 @@
 import "./InstagramButton.css";
 
-const text = "INSTAGRAM INSTAGRAM ";
-
-const InstagramButton = () => {
-  const chars = text.split("");
+const text = "I N S T A G R A M   I N S T A G R A M ".replace(/ /g, "");
+// Use exactly 19 characters like original: "INSTAGRAM INSTAGRAM"
+const chars = "INSTAGRAM INSTAGRAM".split("");
   const degPerChar = 360 / chars.length;
 
   return (
