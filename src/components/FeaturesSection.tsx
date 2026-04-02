@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 import { Zap, Brain, LayoutGrid, Palette } from "lucide-react";
+import MKQCube from "./MKQCube";
 
 const features = [
   { key: "speed", icon: Zap, color: "text-neon-cyan" },
@@ -47,6 +48,8 @@ const FeaturesSection = () => {
             );
           })}
         </div>
+
+        <MKQCube />
       </div>
     </section>
   );
