@@ -24,7 +24,7 @@ const CubeMesh = () => {
     const img = new Image();
     img.src = mkqLogo;
     img.onload = () => {
-      const size = 900;
+      const size = 1000;
       const x = (1024 - size) / 2;
       const y = (1024 - size) / 2;
       ctx.drawImage(img, x, y, size, size);
