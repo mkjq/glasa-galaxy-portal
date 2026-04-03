@@ -59,7 +59,7 @@ const termsContent: Record<string, Record<string, string>> = {
     es: "MKQ proporciona sus servicios \"tal cual\" sin garantías. No seremos responsables de daños derivados del uso de nuestros servicios.",
     de: "MKQ stellt seine Dienste ohne Gewährleistung bereit. Wir haften nicht für Schäden aus der Nutzung unserer Dienste.",
     tr: "MKQ hizmetlerini \"olduğu gibi\" herhangi bir garanti olmadan sunar. Hizmetlerimizin kullanımından kaynaklanan zararlardan sorumlu değiliz.",
-    zh: "MKQ按"现状"提供服务，不作任何保证。我们不对使用服务产生的任何损害承担责任。",
+    zh: "MKQ按「现状」提供服务，不作任何保证。我们不对使用服务产生的任何损害承担责任。",
   },
   s4Title: {
     en: "Changes to Terms", ar: "التغييرات في الشروط", fr: "Modifications des conditions",
