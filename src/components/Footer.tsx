@@ -1,5 +1,5 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { Github, Twitter, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { t } = useLang();
@@ -12,16 +12,8 @@ const Footer = () => {
         </div>
 
         <div className="flex items-center gap-6">
-          <a href="#" className="text-muted-foreground hover:text-neon-blue transition-colors text-sm">{t("footer.privacy")}</a>
-          <a href="#" className="text-muted-foreground hover:text-neon-purple transition-colors text-sm">{t("footer.terms")}</a>
-        </div>
-
-        <div className="flex items-center gap-4">
-          {[Github, Twitter, MessageCircle].map((Icon, i) => (
-            <a key={i} href="#" className="text-muted-foreground hover:text-neon-pink hover:scale-110 transition-all duration-200">
-              <Icon size={20} />
-            </a>
-          ))}
+          <Link to="/privacy" className="text-muted-foreground hover:text-neon-blue transition-colors text-sm">{t("footer.privacy")}</Link>
+          <Link to="/terms" className="text-muted-foreground hover:text-neon-purple transition-colors text-sm">{t("footer.terms")}</Link>
         </div>
       </div>
       <p className="text-center text-muted-foreground text-xs mt-8">© 2026 MKQ. {t("footer.rights")}</p>
