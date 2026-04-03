@@ -17,6 +17,15 @@ const HeroSection = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-pink/10 rounded-full blur-[160px] animate-pulse-glow" style={{ animationDelay: "3s" }} />
 
       <div className="relative z-10 text-center max-w-4xl mx-auto">
+        <motion.img
+          src={mkqLogo}
+          alt="MKQ Logo"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="w-28 h-28 sm:w-36 sm:h-36 mx-auto mb-6 object-contain"
+        />
+
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
