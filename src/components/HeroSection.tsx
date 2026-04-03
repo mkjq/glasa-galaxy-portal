@@ -23,7 +23,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="w-28 h-28 sm:w-36 sm:h-36 mx-auto mb-6 object-contain"
+          className="w-36 h-36 sm:w-44 sm:h-44 mx-auto mb-6 object-contain"
         />
 
         <motion.h1
