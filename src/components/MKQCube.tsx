@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, Suspense } from "react";
+import { useRef, useMemo, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, RoundedBox, Environment } from "@react-three/drei";
 import * as THREE from "three";
@@ -6,15 +6,35 @@ import mkqLogo from "@/assets/MKQ.png";
 
 const CubeMesh = () => {
   const meshRef = useRef<THREE.Mesh>(null);
-  const [texture, setTexture] = useState<THREE.Texture | null>(null);
 
-  useEffect(() => {
-    const loader = new THREE.TextureLoader();
-    loader.load(mkqLogo, (tex) => {
-      tex.colorSpace = THREE.SRGBColorSpace;
-      tex.anisotropy = 16;
-      setTexture(tex);
-    });
+  const texture = useMemo(() => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 1024;
+    canvas.height = 1024;
+    const ctx = canvas.getContext("2d")!;
+
+    // Dark background
+    const grad = ctx.createRadialGradient(512, 512, 100, 512, 512, 512);
+    grad.addColorStop(0, "#1a1a2e");
+    grad.addColorStop(1, "#0a0a14");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 1024, 1024);
+
+    // Load and draw the logo
+    const img = new Image();
+    img.src = mkqLogo;
+    img.onload = () => {
+      const size = 600;
+      const x = (1024 - size) / 2;
+      const y = (1024 - size) / 2;
+      ctx.drawImage(img, x, y, size, size);
+      tex.needsUpdate = true;
+    };
+
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = 16;
+    return tex;
   }, []);
 
   useFrame((_, delta) => {
@@ -26,12 +46,7 @@ const CubeMesh = () => {
 
   return (
     <RoundedBox ref={meshRef} args={[1.2, 1.2, 1.2]} radius={0.08} smoothness={8}>
-      <meshStandardMaterial
-        roughness={0.05}
-        metalness={0.3}
-        map={texture}
-        color={texture ? "#ffffff" : "#1a1a2e"}
-      />
+      <meshStandardMaterial roughness={0.05} metalness={0.3} map={texture} />
     </RoundedBox>
   );
 };
