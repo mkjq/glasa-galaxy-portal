@@ -1,47 +1,20 @@
-import { useRef, useMemo, Suspense } from "react";
+import { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, RoundedBox, Environment } from "@react-three/drei";
 import * as THREE from "three";
+import mkqLogo from "@/assets/MKQ.png";
 
 const CubeMesh = () => {
   const meshRef = useRef<THREE.Mesh>(null);
+  const [texture, setTexture] = useState<THREE.Texture | null>(null);
 
-  const texture = useMemo(() => {
-    const canvas = document.createElement("canvas");
-    canvas.width = 1024;
-    canvas.height = 1024;
-    const ctx = canvas.getContext("2d")!;
-
-    // Dark background with subtle gradient
-    const grad = ctx.createRadialGradient(512, 512, 100, 512, 512, 512);
-    grad.addColorStop(0, "#1a1a2e");
-    grad.addColorStop(1, "#0a0a14");
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, 1024, 1024);
-
-    // Neon glow behind text
-    ctx.shadowColor = "#c026d3";
-    ctx.shadowBlur = 60;
-    ctx.font = "bold 220px 'Inter', 'Arial Black', sans-serif";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "#c026d3";
-    ctx.fillText("MKQ", 512, 512);
-
-    // Crisp text on top
-    ctx.shadowBlur = 0;
-    ctx.fillStyle = "#ffffff";
-    ctx.fillText("MKQ", 512, 512);
-
-    // Subtle outline
-    ctx.strokeStyle = "#a855f7";
-    ctx.lineWidth = 2;
-    ctx.strokeText("MKQ", 512, 512);
-
-    const tex = new THREE.CanvasTexture(canvas);
-    tex.colorSpace = THREE.SRGBColorSpace;
-    tex.anisotropy = 16;
-    return tex;
+  useEffect(() => {
+    const loader = new THREE.TextureLoader();
+    loader.load(mkqLogo, (tex) => {
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.anisotropy = 16;
+      setTexture(tex);
+    });
   }, []);
 
   useFrame((_, delta) => {
@@ -53,7 +26,12 @@ const CubeMesh = () => {
 
   return (
     <RoundedBox ref={meshRef} args={[1.2, 1.2, 1.2]} radius={0.08} smoothness={8}>
-      <meshStandardMaterial roughness={0.05} metalness={0.3} map={texture} />
+      <meshStandardMaterial
+        roughness={0.05}
+        metalness={0.3}
+        map={texture}
+        color={texture ? "#ffffff" : "#1a1a2e"}
+      />
     </RoundedBox>
   );
 };
